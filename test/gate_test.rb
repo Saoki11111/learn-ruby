@@ -9,11 +9,15 @@ require './lib/ticket'
 
 class GateTest < Minitest::Test
   def test_gate
+    # 改札機オブジェクトの作成
     umeda = Gate.new(:umeda)
     juso = Gate.new(:juso)
 
+    # 150円の切符を購入して
     ticket = Ticket.new(150)
+    # 梅田で乗車
     umeda.enter(ticket)
+    # 十三で降車
     assert juso.exit(ticket)
   end
 end
