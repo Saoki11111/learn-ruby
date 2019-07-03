@@ -18,6 +18,11 @@ class GateTest < Minitest::Test
     # 梅田で乗車
     umeda.enter(ticket)
     # 十三で降車
+    umeda = Gate.new(:umeda)
+    juso = Gate.new(:juso)
+
+    ticket = Ticket.new(150)
+    umeda.enter(ticket)
     assert juso.exit(ticket)
   end
 end
