@@ -1,13 +1,22 @@
 def to_hex(r,g,b)
-  # to_s(16) で16進数に変換させる
-  # rjust で桁の文字列で返す
-  hex = '#' 
-  [r, g, b].each do |n|
+  [r, g, b].inject('#') do |hex, n|
     hex += n.to_s(16).rjust(2, '0')
   end
-  # 戻り値として必要...?
-  hex
 end
 
+def to_ints(hex)
+  hex.scan(/\w\w/).map(&:hex)
+end
 
-#puts to_hex(255,255,255)
+# before
+#
+#def to_ints(hex)
+#  r = hex[1..2]
+#  g = hex[3..4]
+#  b = hex[5..6]
+#  ints = []
+#  [r, g, b].each do |s|
+#    ints << s.hex
+#  end
+#  ints
+#end
